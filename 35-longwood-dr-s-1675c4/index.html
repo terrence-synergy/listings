@@ -69,11 +69,17 @@ a{color:inherit}
 /* ---------- section scaffolding ---------- */
 .sec{padding:clamp(52px,7vw,86px) 0;border-top:1px solid var(--border)}
 .sec--surface{background:var(--surface)}
+.sec--intro{padding:clamp(26px,3.5vw,40px) 0}
+.sec--intro .lead{max-width:80ch}
 .sec--dark{background:var(--dark);color:var(--on-dark);border-top:0}
 .sec--dark h2,.sec--dark h3{color:var(--on-dark)}
 .sec--dark .lead,.sec--dark p{color:var(--on-dark-2)}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px}
+.eyebrow{font-size:13.5px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--ink);margin:0 0 12px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";display:inline-block;width:22px;height:3px;background:var(--accent);flex:none}
+.sec--dark .eyebrow,.cta .eyebrow{color:var(--accent)}
+.sec--dark .eyebrow::before,.cta .eyebrow::before{background:var(--accent)}
+.slider .eyebrow,.lp .eyebrow{display:block}.slider .eyebrow::before,.lp .eyebrow::before{display:none}
 .sec--dark .eyebrow{color:var(--accent)}
 h2{font-family:var(--display);font-size:clamp(25px,3.4vw,38px);line-height:1.14;letter-spacing:-.022em;font-weight:600;margin:0;max-width:22ch}
 h3{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.01em;margin:0}
@@ -366,7 +372,7 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--eerie);height:
     <p class="hero__prep">Prepared by <b>Terrence Marshall, CPA</b> · REALTOR® · Salesperson & Team Lead<br>SYNERGY Real Estate Group · REAL Broker Ontario Ltd., Brokerage</p>
   </div>
 </header>
-<section class="sec sec--surface"><div class="wrap"><p class="lead">Raza — thank you for the opportunity to put this together. Everything in it comes from one MLS® pull run in mid-October: every detached sale of 3,000 sq ft or more within 1.5 kilometres of your door since June 1, and every one currently for sale. The sections on value come first, the listing plan follows. One thing shapes the whole document: the buyers for a home like yours are active through November and thin out quickly once December and the holiday season arrive, so the timing matters as much as the number. Our reading of the evidence is stated once, at the end, and labelled as ours.</p></div></section>
+<section class="sec sec--surface sec--intro"><div class="wrap"><p class="lead">Raza — thank you for the opportunity to put this together. Everything in it comes from one MLS® pull run in mid-October: every detached sale of 3,000 sq ft or more within 1.5 kilometres of your door since June 1, and every one currently for sale. The sections on value come first, the listing plan follows. One thing shapes the whole document: the buyers for a home like yours are active through November and thin out quickly once December and the holiday season arrive, so the timing matters as much as the number. Our reading of the evidence is stated once, at the end, and labelled as ours.</p></div></section>
 <section class="sec" id="property">
   <div class="wrap">
     <p class="eyebrow">Section 01 · The property</p>
@@ -632,18 +638,6 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--eerie);height:
       <tbody><tr><td class="em">List price</td><td>$4,499,000</td><td>$4,699,000, moving to $4,499,000 if there is no offer by day 14</td></tr><tr><td class="em">Price per sq ft</td><td>$944 — above every sale in the set, which a 2019 build of this size supports</td><td>$986 — asks for $100 a foot more than Penwood achieved with a pool and parkland</td></tr><tr><td class="em">Position in the field</td><td>$9,000 above 20 Blaine (a renovated 1990 house, 193 days) and $791,000 below 27 Hurlingham, the only other new build. The best-priced new home in the pocket, inside the $4.5M search bracket</td><td>Above Blaine, still well under Hurlingham, but outside the $4.5M bracket most buyers in this range search within — and at a level nothing east of Banbury has cleared this year</td></tr><tr><td class="em">What the sales showed</td><td>The three homes priced within 5–7% of their value sold in six to twelve weeks at 93–95% of list</td><td>The one that opened well above its value took 144 days and sold at 81%; two actives that did the same are at 193 and 167 days</td></tr><tr><td class="em">Likely outcome</td><td>Serious showings in the first fortnight; an offer inside four to six weeks at $4,250,000–$4,450,000</td><td>Two quiet weeks, then the step to $4,499,000 with 14 days showing on the listing — and the same buyers, two weeks closer to December</td></tr><tr><td class="em">What favours this</td><td>Certainty and the calendar: it keeps the whole November window and arrives at the holidays sold or in negotiation</td><td>The chance that a buyer who has watched Hurlingham sit sees $4.7M for a finished 2019 home as the value in the pocket and moves early</td></tr></tbody>
     </table><p class="src">Figures are estimates for discussion. The pricing strategy is finalized at the walkthrough, not before.</p></div>
     
-  </div>
-</section>
-<section class="sec sec--surface" id="tax">
-  <div class="wrap">
-    <p class="eyebrow">Section 10 · The tax picture</p>
-    <h2>A sale of your principal residence is generally tax-free.</h2><hr class="rule">
-    <p class="lead">One flag, not advice.</p>
-    <div class="tbl-wrap mt-m"><table class="kv"><tbody>
-      <tr><td>Principal residence exemption</td><td style="font-weight:400;color:var(--ink-2)">Where a home has been the owner's principal residence for every year it was owned, the gain on sale is generally exempt under the principal residence exemption and the sale is tax-free; the designation is reported on that year's return. Confirm your own situation with your tax advisor before closing. If you have questions, contact the undersigned.</td></tr>
-    </tbody></table></div>
-    <div class="callout mt-m"><p class="callout__l">How we help</p><p>We flag what deserves a closer look before it becomes a costly mistake, so nothing arrives as a surprise at closing.</p></div>
-    <p class="src">Flags for discussion, not legal or tax advice. A formal opinion would be provided under a separate engagement.</p>
   </div>
 </section>
 <section class="sec" id="packages">
