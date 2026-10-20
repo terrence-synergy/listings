@@ -373,13 +373,17 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--eerie);height:
 @media (max-width:760px){.hood{grid-template-columns:1fr}}
 
 /* Live listing links — REALM shared collections */
-.livelinks{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px}
-.livelink{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid var(--border);
-  border-radius:8px;background:#fff;color:var(--ink);text-decoration:none;font-family:var(--body);
-  font-size:14px;font-weight:600;line-height:1.3;transition:border-color .15s,box-shadow .15s}
-.livelink:hover{border-color:var(--verdigris-ink);box-shadow:0 1px 4px rgba(0,0,0,.07)}
-.livelink__ico{flex:0 0 auto;width:18px;height:18px;display:block}
-.livelink__sub{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px}
+.livelinks{display:flex;flex-wrap:wrap;gap:14px;margin:26px 0 4px}
+.livelink{display:inline-flex;align-items:center;gap:13px;padding:17px 24px;border:2px solid var(--eerie);
+  background:var(--accent);color:var(--eerie);text-decoration:none;font-family:var(--display);
+  font-size:16.5px;font-weight:700;line-height:1.25;transition:transform .14s,box-shadow .14s}
+.livelink:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--eerie)}
+.livelink__ico{flex:0 0 auto;width:22px;height:22px;display:block}
+.livelink__sub{display:block;font-family:var(--body);font-weight:500;font-size:13px;color:var(--eerie);opacity:.72;margin-top:3px}
+.sec--dark .livelink,.cta .livelink{border-color:var(--accent)}
+@media (max-width:620px){.livelink{width:100%;font-size:15.5px;padding:15px 18px}}
+.proofbar__link{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+.proofbar__link:hover{color:#fff;border-bottom-color:#fff}
 .livelinks__note{font-family:var(--body);font-size:13px;color:var(--muted);margin:8px 0 0}
 @media print{.livelink{background:none;padding:8px 0;border:0;display:block}
   .livelink__ico{display:none}
@@ -688,7 +692,7 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--eerie);height:
     <p class="eyebrow">Why SYNERGY</p>
     <h2>We are a minute from your door.</h2><hr class="rule">
     <div class="proofbar mt-m">
-      <div><b class="acc">5.0 ★</b><a href="https://share.google/7U7i34zJxyYgXbqkh" target="_blank" rel="noopener" style="color:inherit">141 Google reviews — read them</a></div><div><b>$500M+</b>in sales</div><div><b>50+</b>years combined experience</div><div><b>1,000+</b>families served</div>
+      <div><b class="acc">5.0 ★</b><a class="proofbar__link" href="https://share.google/7U7i34zJxyYgXbqkh" target="_blank" rel="noopener">141 Google reviews — read them</a></div><div><b>$500M+</b>in sales</div><div><b>50+</b>years combined experience</div><div><b>1,000+</b>families served</div>
     </div>
     
     
@@ -698,6 +702,12 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--eerie);height:
       <div class="quote"><div class="quote__s">★★★★★</div><p>“From day one, he came prepared with a clear strategy and a deep understanding of the market, which immediately put me at ease. Terrence's marketing plan truly made my home stand out, and his integrity and dedication were evident throughout.”</p><p class="quote__a">Devika B. · Google review</p></div>
     
       <div class="quote"><div class="quote__s">★★★★★</div><p>“Even after closing, Terrence has always been available for advice and support. Synergy's in-house accounting services have also been a huge asset, providing expert tax consulting and simplifying the filing process.”</p><p class="quote__a">Supavannan J. · Google review</p></div>
+    </div>
+    <div class="livelinks noprint-border">
+      <a class="livelink" href="https://share.google/7U7i34zJxyYgXbqkh" target="_blank" rel="noopener">
+        <svg class="livelink__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Read all 141 Google reviews<span class="livelink__sub">Unedited, on Google — five stars across every one</span></span>
+      </a>
     </div>
     <p class="note" style="color:var(--on-dark-2);opacity:.75">Verified Google reviews for Synergy Real Estate, North York.</p>
     
