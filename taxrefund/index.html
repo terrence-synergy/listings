@@ -121,7 +121,7 @@
         <p class="hint">Skip this if you're not buying in the next 12 months — the contribution refund still counts.</p>
         <div class="toggle"><input type="checkbox" id="buying"><label for="buying" style="margin:0">I'm buying within 12 months</label></div>
         <div class="sub" id="buyBox">
-          <label for="price">Purchase price</label>
+          <label for="price">Purchase price <span class="opt">· new build: the price before HST</span></label>
           <div class="money"><input type="number" inputmode="numeric" id="price" min="0" step="10000" placeholder="600,000"></div>
           <label>Where</label>
           <div class="seg" role="group" aria-label="Where">
@@ -175,7 +175,7 @@
 
     <div class="card" id="newbuildCard" style="display:none">
       <h2>At closing on a new build</h2>
-      <p class="hint">Separate from the refund above — this comes off the HST line in the agreement.</p>
+      <p class="hint">Separate from the refund above — this comes off the 13% HST line in the agreement (5% federal + 8% Ontario).</p>
       <div id="newbuildLines"></div>
     </div>
 
@@ -191,7 +191,7 @@
 </main>
 
 <footer class="wrap">
-  <p><b>How this is calculated.</b> Tax saved from FHSA and RRSP contributions is the difference in combined federal and Ontario income tax with and without the deduction, using 2026 brackets, basic personal amounts and the Ontario surtax. The Home Buyers' Amount is a $10,000 federal credit worth $1,400 in 2026. Land transfer tax refunds are the Ontario first-time buyer refund (up to $4,000) and the City of Toronto refund (up to $4,475). FHSA contributions are capped at $8,000 a year plus one year of carry-forward; RRSP contributions need available room (18% of last year's earned income, up to $33,810). The federal GST relief on new homes is law for first-time buyers (full relief up to $1,000,000, phasing out to $1,500,000); Ontario's 8% first-time buyer rebate has been announced and is shown separately until it is law. Results assume you are an Ontario resident, a first-time buyer under both the FHSA and HBP rules, and that the contributions are deducted in the 2026 tax year.</p>
+  <p><b>How this is calculated.</b> Tax saved from FHSA and RRSP contributions is the difference in combined federal and Ontario income tax with and without the deduction, using 2026 brackets, basic personal amounts and the Ontario surtax. The Home Buyers' Amount is a $10,000 federal credit worth $1,400 in 2026. Land transfer tax refunds are the Ontario first-time buyer refund (up to $4,000) and the City of Toronto refund (up to $4,475). FHSA contributions are capped at $8,000 a year plus one year of carry-forward; RRSP contributions need available room (18% of last year's earned income, up to $33,810). On a new build, HST in Ontario is 13% (a 5% federal part and an 8% Ontario part). Relief of the federal 5% part is law for first-time buyers (full relief up to a $1,000,000 pre-tax price, phasing out to $1,500,000); the standard Ontario new housing rebate (up to $24,000) is already built into builder pricing; Ontario's first-time buyer rebate on the 8% part has been announced and is shown separately until it is law. Results assume you are an Ontario resident, a first-time buyer under both the FHSA and HBP rules, and that the contributions are deducted in the 2026 tax year.</p>
   <p>This is an estimate for planning, not tax advice or a filed return. Your actual refund depends on your full return, including tax already withheld. Book the call and we'll run the real numbers with you.</p>
   <p>SYNERGY Real Estate Group · REAL Broker Ontario Ltd., Brokerage</p>
 </footer>
@@ -247,9 +247,9 @@
         if (seg.newbuild==='yes'){
           const phase = price<=1e6 ? 1 : (price>=1.5e6 ? 0 : (1.5e6-price)/5e5);
           const gst = Math.min(price*0.05*phase, 50000);
-          nb.push({k:'Federal GST relief (5%)', v:gst, why: gst>0 ? 'law since March 2026 — ask the builder to credit it in the agreement' : 'no relief above $1.5M', ok:true});
+          nb.push({k:'Federal 5% part of HST relieved', v:gst, why: gst>0 ? 'law since March 2026 — ask the builder to credit it in the agreement' : 'no relief above $1.5M', ok:true});
           const onH = Math.min(price*0.08, 80000)*phase;
-          nb.push({k:'Ontario 8% first-time buyer rebate', v:onH, why:'announced, not yet law — confirm before you count on it', ok:false});
+          nb.push({k:'Ontario rebate on the 8% part', v:onH, why:'announced, not yet law — confirm before you count on it (the standard $24,000 Ontario rebate is already in the builder\u2019s price)', ok:false});
         }
       }
     }
