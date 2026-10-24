@@ -150,12 +150,12 @@
         <p class="hint">Your number is ready. Tell us who you are and we'll show it — and a CPA on our team can check it with you.</p>
         <label for="name">Name</label>
         <input type="text" id="name" autocomplete="name" placeholder="First and last name" required>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" inputmode="tel" autocomplete="tel" placeholder="416 555 0100" required>
         <label for="email">Email</label>
         <input type="email" id="email" autocomplete="email" placeholder="you@example.com" required>
-        <label for="phone">Phone <span class="opt">· optional</span></label>
-        <input type="tel" id="phone" autocomplete="tel" placeholder="416 555 0100">
         <input class="hp" type="text" id="company" name="company" tabindex="-1" autocomplete="off">
-        <div class="err" id="err2">Please enter your name and a valid email.</div>
+        <div class="err" id="err2">Please enter your name, a phone number and a valid email.</div>
       </div>
       <button class="btn mint" type="submit" id="leadBtn">Get my refund amount →</button>
       <button class="btn ghost" type="button" id="back1">← Change my numbers</button>
@@ -294,12 +294,12 @@
   document.getElementById('lead').addEventListener('submit', async e => {
     e.preventDefault();
     const name = document.getElementById('name').value.trim(), email = document.getElementById('email').value.trim(), phone = document.getElementById('phone').value.trim();
-    const ok = name.length>1 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const ok = name.length>1 && phone.replace(/\D/g,'').length>=10 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     document.getElementById('err2').classList.toggle('on', !ok); if (!ok) return;
     if (document.getElementById('company').value) { render(); show(3); return; } // honeypot: show result, send nothing
     const btn = document.getElementById('leadBtn'); btn.disabled = true; btn.textContent = 'One second…';
     if (!R) compute();
-    const flat = {Name:name, Email:email, Phone:phone||'—', 'Estimated total':fmt(R.total)};
+    const flat = {Name:name, Phone:phone, Email:email, 'Estimated total':fmt(R.total)};
     R.people.forEach((p,i)=>{ const L = R.people.length>1 ? (i?'Partner ':'Your ') : ''; flat[L+'income']=fmt(p.income); flat[L+'FHSA']=fmt(p.fhsa); flat[L+'RRSP']=fmt(p.rrsp); flat[L+'tax back']=fmt(p.saved); });
     flat['Buying within 12 months'] = R.buying ? 'Yes' : 'No';
     if (R.buying){ flat['Price']=fmt(R.price); flat['Toronto']=R.toronto; flat['New build']=R.newbuild; }
