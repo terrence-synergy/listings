@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>First-Time Buyer Refund Estimator</title>
-<meta name="description" content="Estimate the tax refund and rebates a first-time home buyer in Ontario can get from FHSA and RRSP contributions, the Home Buyers' Amount and land transfer tax refunds.">
+<meta name="description" content="Estimate the tax refund and rebates a first-time home buyer in Ontario can get from FHSA and RRSP contributions, the Home Buyers' Amount and land transfer tax rebates.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
 <style>
@@ -191,7 +191,7 @@
 </main>
 
 <footer class="wrap">
-  <p><b>How this is calculated.</b> Tax saved from FHSA and RRSP contributions is the difference in combined federal and Ontario income tax with and without the deduction, using 2026 brackets, basic personal amounts and the Ontario surtax. The Home Buyers' Amount is a $10,000 federal credit worth $1,400 in 2026. Land transfer tax refunds are the Ontario first-time buyer refund (up to $4,000) and the City of Toronto refund (up to $4,475). FHSA contributions are capped at $8,000 a year plus one year of carry-forward; RRSP contributions need available room (18% of last year's earned income, up to $33,810). On a new build, HST in Ontario is 13% (a 5% federal part and an 8% Ontario part). Relief of the federal 5% part is law for first-time buyers (full relief up to a $1,000,000 pre-tax price, phasing out to $1,500,000); the standard Ontario new housing rebate (up to $24,000) is already built into builder pricing; Ontario's first-time buyer rebate on the 8% part has been announced and is shown separately until it is law. Results assume you are an Ontario resident, a first-time buyer under both the FHSA and HBP rules, and that the contributions are deducted in the 2026 tax year.</p>
+  <p><b>How this is calculated.</b> Tax saved from FHSA and RRSP contributions is the difference in combined federal and Ontario income tax with and without the deduction, using 2026 brackets, basic personal amounts and the Ontario surtax. The Home Buyers' Amount is a $10,000 federal credit worth $1,400 in 2026. Land transfer tax rebates are the Ontario first-time buyer rebate (up to $4,000) and the City of Toronto rebate (up to $4,475). FHSA contributions are capped at $8,000 a year plus one year of carry-forward; RRSP contributions need available room (18% of last year's earned income, up to $33,810). On a new build, HST in Ontario is 13% (a 5% federal part and an 8% Ontario part). Relief of the federal 5% part is law for first-time buyers (full relief up to a $1,000,000 pre-tax price, phasing out to $1,500,000); the standard Ontario new housing rebate (up to $24,000) is already built into builder pricing; Ontario's first-time buyer rebate on the 8% part has been announced and is shown separately until it is law. Results assume you are an Ontario resident, a first-time buyer under both the FHSA and HBP rules, and that the contributions are deducted in the 2026 tax year.</p>
   <p>This is an estimate for planning, not tax advice or a filed return. Your actual refund depends on your full return, including tax already withheld. Book the call and we'll run the real numbers with you.</p>
   <p>SYNERGY Real Estate Group · REAL Broker Ontario Ltd., Brokerage</p>
 </footer>
@@ -242,8 +242,8 @@
     if (buying){
       lines.push({k:'Home Buyers’ Amount', v:HBA, why:'$10,000 federal credit, claimed on the return for the year you close'}); total += HBA;
       if (price>0){
-        const onR = Math.min(ltt(price), ON_LTT_MAX); lines.push({k:'Ontario land transfer tax refund', v:onR, why:'refunded at closing on '+fmt(ltt(price))+' of provincial LTT'}); total += onR;
-        if (seg.toronto==='yes'){ const toR = Math.min(ltt(price), TO_LTT_MAX); lines.push({k:'City of Toronto land transfer tax refund', v:toR, why:'Toronto charges its own LTT; first-time buyers get up to $4,475 back'}); total += toR; }
+        const onR = Math.min(ltt(price), ON_LTT_MAX); lines.push({k:'Ontario land transfer tax rebate', v:onR, why:'rebated at closing on '+fmt(ltt(price))+' of provincial LTT'}); total += onR;
+        if (seg.toronto==='yes'){ const toR = Math.min(ltt(price), TO_LTT_MAX); lines.push({k:'City of Toronto land transfer tax rebate', v:toR, why:'Toronto charges its own LTT; first-time buyers get up to $4,475 back'}); total += toR; }
         if (seg.newbuild==='yes'){
           const phase = price<=1e6 ? 1 : (price>=1.5e6 ? 0 : (1.5e6-price)/5e5);
           const gst = Math.min(price*0.05*phase, 50000);
