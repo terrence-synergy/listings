@@ -125,7 +125,7 @@ footer small{display:block;color:#9AA3A7;font-size:12px;margin-top:18px;max-widt
     </div>
     <div class="eyebrow">32 Trolley Crescent · River City 2</div>
     <h1>Rent unit 814 or buy unit 502?</h1>
-    <p class="lede">Two units in the same building with the same 452 sq ft floor plan. One is for lease at $2,000 a month, the other is for sale at $360,000. Here is what each choice costs you, and how a first-home tax plan funds your cushion after closing.</p>
+    <p class="lede">Two units in the same building with the same 452 sq ft floor plan. One is for lease at $2,000 a month, the other is listed for sale at $360,000 and modelled here at a negotiated $350,000. Here is what each choice costs you, and how a first-home tax plan funds your cushion after closing.</p>
   </div>
 </header>
 
@@ -150,8 +150,9 @@ footer small{display:block;color:#9AA3A7;font-size:12px;margin-top:18px;max-widt
       <div class="card unit">
         <span class="tag buy">For sale</span>
         <h3>Unit 502</h3>
-        <div class="price">$360,000 <small>· was $385,000</small></div>
+        <div class="price">$360,000 <small>list · was $385,000</small></div>
         <dl><dt>Size</dt><dd>452 sq ft · 1 bed · 1 bath</dd><dt>Exposure</dt><dd>East</dd><dt>Maintenance fee</dt><dd>$340.16 / month</dd><dt>Property tax (2026)</dt><dd>$2,041 / year</dd><dt>MLS®</dt><dd>C13804848</dd></dl>
+        <p class="note" id="neg-note"></p>
       </div>
     </div>
   </section>
@@ -168,7 +169,7 @@ footer small{display:block;color:#9AA3A7;font-size:12px;margin-top:18px;max-widt
 
   <section>
     <h2>The tax plan: move your savings through an FHSA and RRSP first</h2>
-    <p class="sub">Your $50,000 is going toward the down payment anyway. Routing $46,000 of it through registered accounts first turns it into tax deductions. You then withdraw it tax-free for the purchase.</p>
+    <p class="sub">Your $50,000 is going toward this purchase anyway. Routing $46,000 of it through registered accounts first turns it into tax deductions. You then withdraw it tax-free when you buy.</p>
     <ol class="steps">
       <li><span>Before December 31, 2026</span><b>$8,000</b><span>into a new FHSA</span><p>Deducted on your 2026 return. Withdrawn tax-free for a first home, never repaid.</p></li>
       <li><span>January 2027</span><b>$8,000</b><span>into the FHSA again</span><p>Your 2027 room. This one is deducted on your 2027 return, so it is not in the refund below.</p></li>
@@ -193,7 +194,7 @@ footer small{display:block;color:#9AA3A7;font-size:12px;margin-top:18px;max-widt
 
   <section>
     <h2>Closing costs as a first-time buyer in Toronto</h2>
-    <p class="sub">At this price both land transfer taxes are fully rebated. That is $7,750 you do not pay.</p>
+    <p class="sub" id="ltt-sub"></p>
     <div class="grid2">
       <div class="card"><div class="tblwrap"><table id="tb-close"></table></div></div>
       <div class="card">
@@ -209,8 +210,8 @@ footer small{display:block;color:#9AA3A7;font-size:12px;margin-top:18px;max-widt
     <p class="sub">Net worth if you sold the condo and paid selling costs, against renting and investing the same money. The renter keeps the full $50,000 plus the same tax refund invested and adds the monthly difference. Move the sliders to test it.</p>
     <div class="card">
       <div class="controls">
-        <div><label for="i-price">Purchase price <output id="o-price"></output></label><input type="range" id="i-price" min="330000" max="370000" step="1000" value="360000"></div>
-        <div><label for="i-down">Down payment <output id="o-down"></output></label><input type="range" id="i-down" min="18000" max="56000" step="1000" value="46000"></div>
+        <div><label for="i-price">Negotiated purchase price <output id="o-price"></output></label><input type="range" id="i-price" min="320000" max="370000" step="1000" value="350000"></div>
+        <div><label for="i-down">Down payment <output id="o-down"></output></label><input type="range" id="i-down" min="16000" max="56000" step="1000" value="35000"></div>
         <div><label for="i-rate">Variable mortgage rate <output id="o-rate"></output></label><input type="range" id="i-rate" min="3" max="6" step="0.05" value="3.95"></div>
         <div><label for="i-app">Condo price growth per year <output id="o-app"></output></label><input type="range" id="i-app" min="-2" max="5" step="0.1" value="2"></div>
         <div><label for="i-inv">Investment return if renting <output id="o-inv"></output></label><input type="range" id="i-inv" min="2" max="8" step="0.1" value="5"></div>
@@ -233,7 +234,7 @@ footer small{display:block;color:#9AA3A7;font-size:12px;margin-top:18px;max-widt
         <li><b>January 2027</b><span>Deposit the second $8,000 to the FHSA.</span></li>
         <li><b>Late February 2027</b><span>File your 2026 return once your T4 and contribution slips arrive. Refunds usually arrive about two weeks after e-filing.</span></li>
         <li><b>90 days after the RRSP deposit</b><span>Earliest date to withdraw the $30,000 under the Home Buyers' Plan. A deposit on November 20 clears on February 18.</span></li>
-        <li><b>Closing</b><span>Withdraw $16,000 from the FHSA and $30,000 from the RRSP for the down payment. Both land transfer tax rebates are applied by your lawyer at closing.</span></li>
+        <li><b>Closing</b><span id="tl-close"></span></li>
         <li><b>2032 onward</b><span>Repay the RRSP $2,000 a year for 15 years. Nothing is repaid on the FHSA.</span></li>
       </ol>
     </div>
@@ -367,7 +368,8 @@ function model(inp) {
 const $ = id => document.getElementById(id);
 const f0 = n => (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-CA');
 const pct = (n, d = 1) => (n * 100).toFixed(d) + '%';
-const S = { price: 360000, down: 46000, rate: 0.0395, amort: 30, appreciation: 0.02, invReturn: 0.05 };
+const LIST = 360000;
+const S = { price: 350000, down: 35000, rate: 0.0395, amort: 30, appreciation: 0.02, invReturn: 0.05 };
 const NS = 'http://www.w3.org/2000/svg';
 function el(tag, attrs, text) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; }
 function svgIn(host, w, h) { host.querySelectorAll('svg').forEach(s => s.remove()); const s = el('svg', { viewBox: `0 0 ${w} ${h}`, role: 'img' }); host.appendChild(s); return s; }
@@ -450,11 +452,15 @@ function render() {
     { c: ['Land transfer tax you pay', f0(c.lttNet)] }, { c: ['Sales tax on mortgage insurance (8%)', f0(c.pst)] },
     { c: ['Legal fees, disbursements, title insurance (est.)', f0(c.legal)] }, { c: ['Adjustments for prepaid tax and fees (est.)', f0(c.adjustments)] }, { c: ['Total cash at closing', f0(c.total)], tot: 1 }]);
   rows('tb-mtg', null, [
-    { c: ['Purchase price', f0(S.price)] }, { c: [`Down payment (${pct(m.downPct)})`, '−' + f0(S.down)] },
+    { c: ['List price', f0(LIST)] }, { c: [S.price <= LIST ? 'Negotiated off list' : 'Over list', (S.price <= LIST ? '−' : '+') + f0(Math.abs(LIST - S.price))] }, { c: ['Purchase price', f0(S.price)] }, { c: [`Down payment (${pct(m.downPct)})`, '−' + f0(S.down)] },
     { c: [`Mortgage insurance premium (${pct(m.pRate, 2)})`, '+' + f0(m.premium)] }, { c: ['Mortgage', f0(m.loan)], tot: 1 },
     { c: [`Payment at ${(S.rate * 100).toFixed(2)}% variable, ${S.amort}-year amortization`, f0(m.pmt) + '/mo'] }]);
   const ok = m.gds <= 0.39, other = S.amort === 30 ? 25 : 30, og = model(Object.assign({}, S, { amort: other })).gds;
   $('q-note').innerHTML = `<span class="pill ${ok ? 'ok' : 'warn'}">${ok ? 'Qualifies' : 'Over the limit'}</span> Housing costs are ${pct(m.gds)} of base salary at the ${(m.qRate * 100).toFixed(2)}% qualifying rate. The limit is 39%. At ${other} years it would be ${pct(og)}.`;
+  $('neg-note').textContent = `On the market 57 days with two price cuts, and it last sold for $356,000 in 2017. This page assumes an accepted offer of ${f0(S.price)}${S.price < LIST ? ', which is ' + f0(LIST - S.price) + ' under list' : ''}. There may be room for more; drag the price slider below to see what each $1,000 does.`;
+  $('ltt-sub').textContent = c.lttNet === 0 ? `At ${f0(S.price)} both land transfer taxes are fully rebated. That is ${f0(c.lttOn + c.lttTo)} you do not pay.` : `At ${f0(S.price)} the first-time buyer rebates cover ${f0(c.rebOn + c.rebTo)} of the land transfer tax.`;
+  const wd = FIX.fhsa2026 + FIX.fhsa2027 + FIX.rrsp;
+  $('tl-close').textContent = `Withdraw $16,000 from the FHSA and $30,000 from the RRSP. ${f0(Math.min(S.down, wd))} goes to the down payment${S.down < wd ? ' and the other ' + f0(wd - S.down) + ' stays with you as part of the emergency fund' : ''}. Both land transfer tax rebates are applied by your lawyer at closing.`;
   drawNW(m);
   const y5 = m.years[5], y10 = m.years[10], d5 = y5.buy - y5.rent;
   $('verdict').textContent = `After 5 years, buying leaves you ${f0(Math.abs(d5))} ${d5 >= 0 ? 'ahead of' : 'behind'} renting. After 10 years the gap is ${f0(Math.abs(y10.buy - y10.rent))} ${y10.buy >= y10.rent ? 'in favour of buying' : 'in favour of renting'}.`;
